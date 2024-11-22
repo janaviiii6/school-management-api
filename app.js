@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 
+const schoolRoutes = require('./routes/schoolRoute');
+
+//Routes
+app.use('/',schoolRoutes);
+
 sequelize.sync({ force: true })
     .then(() => {
         console.log('Database and table synced successfully!');
