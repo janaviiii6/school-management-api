@@ -15,7 +15,7 @@ const schoolRoutes = require('./routes/schoolRoute');
 //Routes
 app.use('/',schoolRoutes);
 
-sequelize.sync({ force: true })
+sequelize.sync()
     .then(() => {
         console.log('Database and table synced successfully!');
     })
