@@ -21,13 +21,16 @@ const schoolRoutes = require('./routes/schoolRoute');
 //Routes
 app.use('/',schoolRoutes);
 
-sequelize.sync()
-    .then(() => {
-        console.log('Database and table synced successfully!');
-    })
-    .catch((error) => {
-        console.error('Error syncing database: ', error);
-    });
+if (process.env.NODE_ENV !== 'production') {
+    sequelize.sync()
+        .then(() => {
+            console.log('Database and tables synced successfully!');
+        })
+        .catch((error) => {
+            console.error('Error syncing database:', error);
+        });
+}
+
 
 //Start the Server
 app.listen(PORT, () => {
