@@ -10,6 +10,12 @@ const PORT = process.env.PORT || 8000;
 app.use(cors());
 app.use(express.json());
 
+app.use(
+    cors({
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    })
+  );
+
 const schoolRoutes = require('./routes/schoolRoute');
 
 //Routes
